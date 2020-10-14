@@ -1,0 +1,11 @@
+.card{
+    border: none;
+    background-color: #01415C;
+}
+.content{
+    margin: 2% 12% 0 12%;
+}
+
+.card-body{
+    min-height: 11rem;    
+}

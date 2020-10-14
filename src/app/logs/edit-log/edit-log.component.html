@@ -1,0 +1,77 @@
+<app-nav></app-nav>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-sm">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body" *ngIf="log!=null">
+                    <h5 class="card-title">{{ log.ip }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Status: {{ log.status }}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">Request: {{ log.request }}</h6>
+                    <button class="btn btn-danger" data-toggle="modal" #id data-target="#exampleModal">Delete</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div *ngIf="status" class="alert alert-success" role="alert">
+                {{ messageReturn }}
+            </div>
+            <form *ngIf="log!=null" class="form-group" [formGroup]="form" (ngSubmit)="submitForm()">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Date</label>
+                    <input type="text" formControlName="date" class="form-control" id="date" placeholder="Enter date" />
+                    <small id="emailHelp" class="form-text text-muted">Date format: yyyy-MM-dd HH:mm:ss.SSS</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">IP</label>
+                    <input type="text" [formControlName]="'ip'" class="form-control" id="ip" placeholder="Enter ip" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Request</label>
+                    <input type="text" [formControlName]="'request'" class="form-control" id="request"
+                        placeholder="Enter request" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Status</label>
+                    <input type="number" [formControlName]="'status'" class="form-control" id="status"
+                        placeholder="Enter status" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">User agent</label>
+                    <input type="text" [formControlName]="'userAgent'" class="form-control" id="userAgent"
+                        placeholder="Enter userAgent" />
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm">
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Do you want delete this Log?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"
+                        (click)="delete()">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

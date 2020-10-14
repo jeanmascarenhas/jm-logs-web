@@ -1,0 +1,19 @@
+.title{
+    margin-top: 20px;
+}
+
+.nav-link{
+    color: #fff;
+}
+
+.nav-item{
+    border: #000 solid 1px;
+    margin-left: 2px;
+    margin-right: 2px;
+    border-radius: 5px;
+    background-color: #027FB5;
+}
+
+.nav-item :hover{
+   background-color: rgba(0, 0, 0, 0.2);
+}

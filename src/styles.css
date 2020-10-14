@@ -1,0 +1,13 @@
+body {
+    font-size: 2rem;
+    background-color: #01415C !important;
+    color: #fff !important;
+}
+td{
+    font-size: 0.8rem;
+    font-family: "Courier New", Courier, monospace;
+}
+
+.modal-body{
+    color: #000 !important;
+}

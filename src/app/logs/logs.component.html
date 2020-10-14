@@ -1,0 +1,84 @@
+<app-nav></app-nav>
+
+<div class="row m-4 justify-content-center">
+    <div class="col-1"></div>
+    <div class="col-10">
+        <div *ngIf="statusError">
+            <div class="alert alert-danger" role="alert">
+                {{ messageError }}
+            </div>
+        </div>
+        <form (submit)="search()" role="form">
+            <div class="row">
+                <div class="col-2">
+                    <input type="text" class="form-control" [(ngModel)]="searchText" name="searchText" id="searchText"
+                        required />
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-4 searchBy">
+                                <label for="searchBy">Search by</label>
+                            </div>
+                            <div class="col-8">
+                                <select class="form-control" id="searchType" [(ngModel)]="searchType" name="searchType"
+                                    id="searchType" required>
+                                    <option value="ip">IP</option>
+                                    <option value="request">Request</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"
+                        (click)="search()">Search</button>
+                    <button type="button" class="btn btn-primary ml-2" data-dismiss="modal"
+                        (click)="getLogs()">Reset</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <div class="col-1"></div>
+</div>
+
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+        <table class="table table-sm" id="logs" *ngIf="statusRequest">
+            <thead>
+                <tr>
+                    <th class="text-center">Date</th>
+                    <th class="text-center">IP</th>
+                    <th class="text-center">Request</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">User agent</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let log of logs, let i = index">
+                    <td class="text-center">{{ log.date }}</td>
+                    <td class="text-center">{{ log.ip }}</td>
+                    <td class="text-center">{{ log.request }}</td>
+                    <td class="text-center">{{ log.status }}</td>
+                    <td class="text-center">{{ log.userAgent }}</td>
+                    <td class="text-center">
+                        <div class="row">
+                            <div class="col">
+                                <button [routerLink]="['edit-log/', log.id]"
+                                    class="btn btn-success btn-sm">Edit</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-1"></div>
+</div>
+
+<div class="text-center" *ngIf="!statusRequest">
+    <img src="../../../assets/loading.gif" alt="">
+</div>

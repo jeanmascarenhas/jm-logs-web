@@ -1,0 +1,47 @@
+<app-nav></app-nav>
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-sm">
+        </div>
+        <div class="col-sm">
+                    <div *ngIf="status" class="alert alert-success" role="alert">
+                        {{ messageReturn }}
+                    </div>
+                    <div *ngIf="statusError" class="alert alert-danger" role="alert">
+                        {{ messageReturn }}
+                    </div>
+            <form class="form-group" [formGroup]="form" (ngSubmit)="submitForm()">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Date</label>
+                    <input type="text" [formControlName]="'date'" class="form-control" id="date"
+                        placeholder="Enter date" />
+                    <small id="emailHelp" class="form-text text-muted">Date format: yyyy-MM-dd HH:mm:ss.SSS</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">IP</label>
+                    <input type="text" [formControlName]="'ip'" class="form-control" id="ip" placeholder="Enter ip" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Request</label>
+                    <input type="text" [formControlName]="'request'" class="form-control" id="request"
+                        placeholder="Enter request" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Status</label>
+                    <input type="number" [formControlName]="'status'" class="form-control" id="status"
+                        placeholder="Enter status" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">User agent</label>
+                    <input type="text" [formControlName]="'userAgent'" class="form-control" id="userAgent"
+                        placeholder="Enter userAgent" />
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm">
+        </div>
+    </div>
+</div>
